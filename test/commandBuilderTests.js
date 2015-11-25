@@ -48,5 +48,37 @@ describe("CommandBuilder", function() {
             expect(command.packages[2].name).to.equal("Microsoft.AspNet.WebApi.Core");
             expect(command.packages[2].version).to.equal("5.2.2");
         });
+
+        it("The library path is not provided, the library path value for the command is the default value '-o lib'", function() {
+            var configuration = {
+                "packages": []
+            };
+
+            var command = new Command.Command();
+            commandBuilder.processConfiguration(configuration, command);
+            expect(command.libraryPath).to.equal('-o lib');
+        });
+
+        it("The library path is provided, but it is an empty string, the library path value for the command is the default value '-o lib'", function() {
+            var configuration = {
+                "libraryPath": '',
+                "packages": []
+            };
+
+            var command = new Command.Command();
+            commandBuilder.processConfiguration(configuration, command);
+            expect(command.libraryPath).to.equal('-o lib');
+        });
+
+        it("The library path is provided and set to 'newLib', the library path value for the command is the default value '-o newLib'", function() {
+            var configuration = {
+                "libraryPath": 'newLib',
+                "packages": []
+            };
+
+            var command = new Command.Command();
+            commandBuilder.processConfiguration(configuration, command);
+            expect(command.libraryPath).to.equal('-o newLib');
+        });
     })
 });

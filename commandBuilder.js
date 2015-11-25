@@ -4,6 +4,16 @@ var Command = require('./command.js');
 
 function processConfiguration(configuration, command) {
     command.packages = extractPackages(configuration.packages);
+    command.libraryPath = extractLibraryPath(configuration, command.libraryPath);
+}
+
+function extractLibraryPath(configuration, defaultPath) {
+
+    if(!configuration.libraryPath) {
+        return defaultPath;
+    }
+
+    return '-o ' + configuration.libraryPath;
 }
 
 /**
