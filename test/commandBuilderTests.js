@@ -70,7 +70,7 @@ describe("CommandBuilder", function() {
             expect(command.libraryPath).to.equal('-o lib');
         });
 
-        it("The library path is provided and set to 'newLib', the library path value for the command is the default value '-o newLib'", function() {
+        it("The library path is provided and set to 'newLib', the library path value for the command is set to the value '-o newLib'", function() {
             var configuration = {
                 "libraryPath": 'newLib',
                 "packages": []
@@ -79,6 +79,38 @@ describe("CommandBuilder", function() {
             var command = new Command.Command();
             commandBuilder.processConfiguration(configuration, command);
             expect(command.libraryPath).to.equal('-o newLib');
+        });
+
+        it("The nuget path is not provided, the nuget path value for the command is the default value defined in the $NUGET_PATH environment variable", function() {
+            var configuration = {
+                "packages": []
+            };
+
+            var command = new Command.Command();
+            commandBuilder.processConfiguration(configuration, command);
+            expect(command.nugetPath).to.equal(process.env.NUGET_PATH);
+        });
+
+        it("The nuget path is provided, but it is an empty string, the nuget path value for the command is the default value defined in the $NUGET_PATH environment variable", function() {
+            var configuration = {
+                "nugetPath": '',
+                "packages": []
+            };
+
+            var command = new Command.Command();
+            commandBuilder.processConfiguration(configuration, command);
+            expect(command.nugetPath).to.equal(process.env.NUGET_PATH);
+        });
+
+        it("The nuget path is provided and set to '/home/nuget.exe', the nuget path value for the command is the value '/home/nuget.exe'", function() {
+            var configuration = {
+                "nugetPath": '/home/nuget.exe',
+                "packages": []
+            };
+
+            var command = new Command.Command();
+            commandBuilder.processConfiguration(configuration, command);
+            expect(command.nugetPath).to.equal('/home/nuget.exe');
         });
     })
 });

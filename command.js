@@ -1,8 +1,9 @@
+'use strict';
+
 function Command() {
     this.environment = 'mono';
     this.nugetPath = process.env.NUGET_PATH;
     this.packages = [];
-    this.executableName = 'nuget.exe'
     this.commandName = 'install';
     this.libraryPath = '-o lib';
 }
@@ -16,7 +17,7 @@ Command.prototype.generateCommands = function() {
     var commands = [];
 
     for(var i = 0; i < this.packages.length; ++i) {
-        var commandArray = [this.environment, this.nugetPath + '/' + this.executableName, this.commandName, this.packages[i].name, '-Version "' + this.packages[i].version + '"', this.libraryPath];
+        var commandArray = [this.environment, this.nugetPath, this.commandName, this.packages[i].name, '-Version "' + this.packages[i].version + '"', this.libraryPath];
         commands.push(commandArray.join(' '));
     }
 

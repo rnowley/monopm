@@ -16,7 +16,7 @@ describe("Command", function() {
         it("The default command instance with one package, one command is generated", function() {
             var command = new Command.Command();
             var currentPackage = new Command.Package();
-            var expectedCommand = 'mono ' + command.nugetPath + '/nuget.exe install Microsoft.AspNet.WebApi -Version "5.2.2" -o lib';
+            var expectedCommand = 'mono ' + command.nugetPath + ' install Microsoft.AspNet.WebApi -Version "5.2.2" -o lib';
             currentPackage.name = 'Microsoft.AspNet.WebApi';
             currentPackage.version = '5.2.2';
             command.packages.push(currentPackage);
@@ -30,8 +30,8 @@ describe("Command", function() {
         it("The default command instance with two packages, two command are generated", function() {
             var command = new Command.Command();
             var expectedCommands = [
-                'mono ' + command.nugetPath + '/nuget.exe install Microsoft.AspNet.WebApi -Version "5.2.2" -o lib',
-                'mono ' + command.nugetPath + '/nuget.exe install Microsoft.AspNet.WebApi.Client -Version "5.2.2" -o lib',
+                'mono ' + command.nugetPath + ' install Microsoft.AspNet.WebApi -Version "5.2.2" -o lib',
+                'mono ' + command.nugetPath + ' install Microsoft.AspNet.WebApi.Client -Version "5.2.2" -o lib',
             ];
 
             var currentPackage = new Command.Package();
