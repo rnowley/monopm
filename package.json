@@ -1,0 +1,38 @@
+{
+  "name": "monopm",
+  "version": "0.1.0",
+  "description": "A dependency manager for Mono.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rnowley/monopm.git"
+  },
+  "keywords": [
+    "C#",
+    "mono",
+    "dependency",
+    "package",
+    "csharp",
+    "nuget"
+  ],
+  "author": "Raymond Nowley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rnowley/monopm/issues"
+  },
+  "homepage": "https://github.com/rnowley/monopm",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "fs-extra": "^0.26.2",
+    "yargs": "^3.30.0"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1"
+  }
+}
