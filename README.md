@@ -8,6 +8,12 @@ This utility provides a wrapper around the Nuget package manager and allows you 
 ```sh
 $ npm istall -g monopm
 ```
+## Setup
+If you want to rely on the default path for the nuget executable you need to set up an environment variable called NUGET_PATH.
+An example set up could be:
+```sh
+export NUGET_PATH=$HOME/bin/nuget.exe
+```
 
 ## Usage
 ```
