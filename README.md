@@ -18,7 +18,7 @@ The available options are:
   -h                Display help for this command.
 ```
 
-## The Structure of a Project File
+## The Structure of a Dependency File
 ```
 {
     "libraryPath": 'newLib',
@@ -31,3 +31,7 @@ The available options are:
 }
 ```
 * __libraryPath__ : The directory where the packages will be installed. This setting is optional and if it is not provided then it will default to ./lib
+* __nugetPath__ : The path to the nuget executable. This setting is optional and if it is not provided then it will use the path stored in the $NUGET_PATH environment variable.
+* __packages__ : The list of packages to be installed for this project.
+  * __name__: The name of the package to install, this maps to packageId in nuget speak.
+  * __version__: The version of the package to install.
