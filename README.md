@@ -15,4 +15,5 @@ monopm {OPTIONS}
 
 The available options are:
   --dependencyFile, Used to indicate the location of the configuration file containing all of the dependency information. It defaults to 'dependencies.json'.
+  -h                Display help for this command.
 ```
